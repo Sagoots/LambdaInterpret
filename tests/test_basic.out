@@ -1,0 +1,32 @@
+--- λ-Calculus REPL ---
+Input from: C:\Users\solom\Documents\Wolfram\lambdaREPL\tests\test_basic.in
+Output to: C:\Users\solom\Documents\Wolfram\lambdaREPL\tests\test_basic.out
+Enter expressions or macro definitions (e.g., #define ID <expression>).
+ Type 'exit' or 'quit' to end.
+λ> (λx.x) y →
+y
+
+λ> (λx.x) (λy.y) z →
+(λy.y) z →
+z
+
+λ> 3 →
+λf x.f (f (f x))
+
+λ> λx.x
+
+λ> let id = (λx.x) in id A →
+(λx.x) A →
+A
+
+λ> let apply = (λf x.f x) in apply (λa.a) B →
+(λf x.f x) (λa.a) B →
+(λx.(λa.a) x) B →
+(λa.a) B →
+B
+
+λ> (λx.x) 5 →
+5 →
+λf x.f (f (f (f (f x))))
+
+λ> End of input or input canceled. Exiting REPL.

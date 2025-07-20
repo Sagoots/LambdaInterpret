@@ -1,0 +1,8 @@
+( (\x.x)
+\x.
+1 2
+#define BAD_MACRO_1
+#define BAD_MACRO_2 =
+#define 123 = (\x.x)
+UNDEFINED_MACRO A
+\x. (x x

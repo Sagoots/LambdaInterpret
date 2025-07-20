@@ -1,0 +1,23 @@
+PLUS 2 3
+
+SUCC 1
+
+PRED 3
+
+ISZERO 0
+ISZERO 1
+
+MINUS 3 1
+
+LEQ 1 2
+
+LEQ 2 1
+
+#define FACT_GEN \f n. IF (ISZERO n) 1 (MULT n (f (PRED n)))
+#define FACT Y FACT_GEN
+
+FACT 0
+
+FACT 1
+
+FACT 2

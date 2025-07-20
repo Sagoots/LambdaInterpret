@@ -1,0 +1,389 @@
+--- λ-Calculus REPL ---
+Input from: C:\Users\solom\Documents\Wolfram\lambdaREPL\tests\test_recursive.in
+Output to: C:\Users\solom\Documents\Wolfram\lambdaREPL\tests\test_recursive.out
+Enter expressions or macro definitions (e.g., #define ID <expression>).
+ Type 'exit' or 'quit' to end.
+λ> Defined macro: Sum = λf x.IF (ISZERO x) 0 (PLUS (f (PRED x)) x)
+
+λ> Y Sum 0 →
+(λf.(λx.f (x x)) (λx.f (x x))) Sum 0 →
+(λx.Sum (x x)) (λx.Sum (x x)) 0 →
+Sum ((λx.Sum (x x)) (λx.Sum (x x))) 0 →
+(λf x.IF (ISZERO x) 0 (PLUS (f (PRED x)) x)) ((λx.Sum (x x)) (λx.Sum (x x))) 0 →
+(λx.IF (ISZERO x) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED x)) x)) 0 →
+IF (ISZERO 0) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 0)) 0) →
+(λp x y.p x y) (ISZERO 0) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 0)) 0) →
+(λx y.ISZERO 0 x y) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 0)) 0) →
+(λy.ISZERO 0 0 y) (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 0)) 0) →
+ISZERO 0 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 0)) 0) →
+(λn.n (λx.FALSE) TRUE) 0 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 0)) 0) →
+0 (λx.FALSE) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 0)) 0) →
+(λf x.x) (λx.FALSE) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 0)) 0) →
+(λx.x) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 0)) 0) →
+TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 0)) 0) →
+(λx y.x) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 0)) 0) →
+(λy.0) (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 0)) 0) →
+0 →
+λf x.x
+
+λ> Y Sum 1 →
+(λf.(λx.f (x x)) (λx.f (x x))) Sum 1 →
+(λx.Sum (x x)) (λx.Sum (x x)) 1 →
+Sum ((λx.Sum (x x)) (λx.Sum (x x))) 1 →
+(λf x.IF (ISZERO x) 0 (PLUS (f (PRED x)) x)) ((λx.Sum (x x)) (λx.Sum (x x))) 1 →
+(λx.IF (ISZERO x) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED x)) x)) 1 →
+IF (ISZERO 1) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 1)) 1) →
+(λp x y.p x y) (ISZERO 1) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 1)) 1) →
+(λx y.ISZERO 1 x y) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 1)) 1) →
+(λy.ISZERO 1 0 y) (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 1)) 1) →
+ISZERO 1 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 1)) 1) →
+(λn.n (λx.FALSE) TRUE) 1 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 1)) 1) →
+1 (λx.FALSE) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 1)) 1) →
+(λf x.f x) (λx.FALSE) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 1)) 1) →
+(λx.(λx.FALSE) x) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 1)) 1) →
+(λx.FALSE) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 1)) 1) →
+FALSE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 1)) 1) →
+(λx y.y) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 1)) 1) →
+(λy.y) (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 1)) 1) →
+PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 1)) 1 →
+(λn m.n SUCC m) ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 1)) 1 →
+(λm.(λx.Sum (x x)) (λx.Sum (x x)) (PRED 1) SUCC m) 1 →
+(λx.Sum (x x)) (λx.Sum (x x)) (PRED 1) SUCC 1 →
+Sum ((λx.Sum (x x)) (λx.Sum (x x))) (PRED 1) SUCC 1 →
+(λf x.IF (ISZERO x) 0 (PLUS (f (PRED x)) x)) ((λx.Sum (x x)) (λx.Sum (x x))) (PRED 1) SUCC 1 →
+(λx.IF (ISZERO x) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED x)) x)) (PRED 1) SUCC 1 →
+IF (ISZERO (PRED 1)) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 1))) (PRED 1)) SUCC 1 →
+(λp x y.p x y) (ISZERO (PRED 1)) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 1))) (PRED 1)) SUCC 1 →
+(λx y.ISZERO (PRED 1) x y) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 1))) (PRED 1)) SUCC 1 →
+(λy.ISZERO (PRED 1) 0 y) (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 1))) (PRED 1)) SUCC 1 →
+ISZERO (PRED 1) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 1))) (PRED 1)) SUCC 1 →
+(λn.n (λx.FALSE) TRUE) (PRED 1) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 1))) (PRED 1)) SUCC 1 →
+PRED 1 (λx.FALSE) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 1))) (PRED 1)) SUCC 1 →
+(λn f x.n (λg h.h (g f)) (λu.x) (λu.u)) 1 (λx.FALSE) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 1))) (PRED 1)) SUCC 1 →
+(λf x.1 (λg h.h (g f)) (λu.x) (λu.u)) (λx.FALSE) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 1))) (PRED 1)) SUCC 1 →
+(λx.1 (λg h.h (g (λx.FALSE))) (λu.x) (λu.u)) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 1))) (PRED 1)) SUCC 1 →
+1 (λg h.h (g (λx.FALSE))) (λu.TRUE) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 1))) (PRED 1)) SUCC 1 →
+(λf x.f x) (λg h.h (g (λx.FALSE))) (λu.TRUE) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 1))) (PRED 1)) SUCC 1 →
+(λx.(λg h.h (g (λx.FALSE))) x) (λu.TRUE) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 1))) (PRED 1)) SUCC 1 →
+(λg h.h (g (λx.FALSE))) (λu.TRUE) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 1))) (PRED 1)) SUCC 1 →
+(λh.h ((λu.TRUE) (λx.FALSE))) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 1))) (PRED 1)) SUCC 1 →
+(λu.u) ((λu.TRUE) (λx.FALSE)) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 1))) (PRED 1)) SUCC 1 →
+(λu.TRUE) (λx.FALSE) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 1))) (PRED 1)) SUCC 1 →
+TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 1))) (PRED 1)) SUCC 1 →
+(λx y.x) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 1))) (PRED 1)) SUCC 1 →
+(λy.0) (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 1))) (PRED 1)) SUCC 1 →
+0 SUCC 1 →
+(λf x.x) SUCC 1 →
+(λx.x) 1 →
+1 →
+λf x.f x →
+λf.f
+
+λ> Y Sum 2 →
+(λf.(λx.f (x x)) (λx.f (x x))) Sum 2 →
+(λx.Sum (x x)) (λx.Sum (x x)) 2 →
+Sum ((λx.Sum (x x)) (λx.Sum (x x))) 2 →
+(λf x.IF (ISZERO x) 0 (PLUS (f (PRED x)) x)) ((λx.Sum (x x)) (λx.Sum (x x))) 2 →
+(λx.IF (ISZERO x) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED x)) x)) 2 →
+IF (ISZERO 2) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 2)) 2) →
+(λp x y.p x y) (ISZERO 2) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 2)) 2) →
+(λx y.ISZERO 2 x y) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 2)) 2) →
+(λy.ISZERO 2 0 y) (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 2)) 2) →
+ISZERO 2 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 2)) 2) →
+(λn.n (λx.FALSE) TRUE) 2 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 2)) 2) →
+2 (λx.FALSE) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 2)) 2) →
+(λf x.f (f x)) (λx.FALSE) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 2)) 2) →
+(λx.(λx.FALSE) ((λx.FALSE) x)) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 2)) 2) →
+(λx.FALSE) ((λx.FALSE) TRUE) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 2)) 2) →
+FALSE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 2)) 2) →
+(λx y.y) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 2)) 2) →
+(λy.y) (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 2)) 2) →
+PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 2)) 2 →
+(λn m.n SUCC m) ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 2)) 2 →
+(λm.(λx.Sum (x x)) (λx.Sum (x x)) (PRED 2) SUCC m) 2 →
+(λx.Sum (x x)) (λx.Sum (x x)) (PRED 2) SUCC 2 →
+Sum ((λx.Sum (x x)) (λx.Sum (x x))) (PRED 2) SUCC 2 →
+(λf x.IF (ISZERO x) 0 (PLUS (f (PRED x)) x)) ((λx.Sum (x x)) (λx.Sum (x x))) (PRED 2) SUCC 2 →
+(λx.IF (ISZERO x) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED x)) x)) (PRED 2) SUCC 2 →
+IF (ISZERO (PRED 2)) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 2))) (PRED 2)) SUCC 2 →
+(λp x y.p x y) (ISZERO (PRED 2)) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 2))) (PRED 2)) SUCC 2 →
+(λx y.ISZERO (PRED 2) x y) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 2))) (PRED 2)) SUCC 2 →
+(λy.ISZERO (PRED 2) 0 y) (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 2))) (PRED 2)) SUCC 2 →
+ISZERO (PRED 2) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 2))) (PRED 2)) SUCC 2 →
+(λn.n (λx.FALSE) TRUE) (PRED 2) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 2))) (PRED 2)) SUCC 2 →
+PRED 2 (λx.FALSE) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 2))) (PRED 2)) SUCC 2 →
+(λn f x.n (λg h.h (g f)) (λu.x) (λu.u)) 2 (λx.FALSE) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 2))) (PRED 2)) SUCC 2 →
+(λf x.2 (λg h.h (g f)) (λu.x) (λu.u)) (λx.FALSE) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 2))) (PRED 2)) SUCC 2 →
+(λx.2 (λg h.h (g (λx.FALSE))) (λu.x) (λu.u)) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 2))) (PRED 2)) SUCC 2 →
+2 (λg h.h (g (λx.FALSE))) (λu.TRUE) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 2))) (PRED 2)) SUCC 2 →
+(λf x.f (f x)) (λg h.h (g (λx.FALSE))) (λu.TRUE) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 2))) (PRED 2)) SUCC 2 →
+(λx.(λg h.h (g (λx.FALSE))) ((λg h.h (g (λx.FALSE))) x)) (λu.TRUE) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 2))) (PRED 2)) SUCC 2 →
+(λg h.h (g (λx.FALSE))) ((λg h.h (g (λx.FALSE))) (λu.TRUE)) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 2))) (PRED 2)) SUCC 2 →
+(λh.h ((λg h.h (g (λx.FALSE))) (λu.TRUE) (λx.FALSE))) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 2))) (PRED 2)) SUCC 2 →
+(λu.u) ((λg h.h (g (λx.FALSE))) (λu.TRUE) (λx.FALSE)) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 2))) (PRED 2)) SUCC 2 →
+(λg h.h (g (λx.FALSE))) (λu.TRUE) (λx.FALSE) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 2))) (PRED 2)) SUCC 2 →
+(λh.h ((λu.TRUE) (λx.FALSE))) (λx.FALSE) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 2))) (PRED 2)) SUCC 2 →
+(λx.FALSE) ((λu.TRUE) (λx.FALSE)) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 2))) (PRED 2)) SUCC 2 →
+FALSE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 2))) (PRED 2)) SUCC 2 →
+(λx y.y) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 2))) (PRED 2)) SUCC 2 →
+(λy.y) (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 2))) (PRED 2)) SUCC 2 →
+PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 2))) (PRED 2) SUCC 2 →
+(λn m.n SUCC m) ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 2))) (PRED 2) SUCC 2 →
+(λm.(λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 2)) SUCC m) (PRED 2) SUCC 2 →
+(λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 2)) SUCC (PRED 2) SUCC 2 →
+Sum ((λx.Sum (x x)) (λx.Sum (x x))) (PRED (PRED 2)) SUCC (PRED 2) SUCC 2 →
+(λf x.IF (ISZERO x) 0 (PLUS (f (PRED x)) x)) ((λx.Sum (x x)) (λx.Sum (x x))) (PRED (PRED 2)) SUCC (PRED 2) SUCC 2 →
+(λx.IF (ISZERO x) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED x)) x)) (PRED (PRED 2)) SUCC (PRED 2) SUCC 2 →
+IF (ISZERO (PRED (PRED 2))) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 2)))) (PRED (PRED 2))) SUCC (PRED 2) SUCC 2 →
+(λp x y.p x y) (ISZERO (PRED (PRED 2))) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 2)))) (PRED (PRED 2))) SUCC (PRED 2) SUCC 2 →
+(λx y.ISZERO (PRED (PRED 2)) x y) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 2)))) (PRED (PRED 2))) SUCC (PRED 2) SUCC 2 →
+(λy.ISZERO (PRED (PRED 2)) 0 y) (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 2)))) (PRED (PRED 2))) SUCC (PRED 2) SUCC 2 →
+ISZERO (PRED (PRED 2)) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 2)))) (PRED (PRED 2))) SUCC (PRED 2) SUCC 2 →
+(λn.n (λx.FALSE) TRUE) (PRED (PRED 2)) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 2)))) (PRED (PRED 2))) SUCC (PRED 2) SUCC 2 →
+PRED (PRED 2) (λx.FALSE) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 2)))) (PRED (PRED 2))) SUCC (PRED 2) SUCC 2 →
+(λn f x.n (λg h.h (g f)) (λu.x) (λu.u)) (PRED 2) (λx.FALSE) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 2)))) (PRED (PRED 2))) SUCC (PRED 2) SUCC 2 →
+(λf x.PRED 2 (λg h.h (g f)) (λu.x) (λu.u)) (λx.FALSE) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 2)))) (PRED (PRED 2))) SUCC (PRED 2) SUCC 2 →
+(λx.PRED 2 (λg h.h (g (λx.FALSE))) (λu.x) (λu.u)) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 2)))) (PRED (PRED 2))) SUCC (PRED 2) SUCC 2 →
+PRED 2 (λg h.h (g (λx.FALSE))) (λu.TRUE) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 2)))) (PRED (PRED 2))) SUCC (PRED 2) SUCC 2 →
+(λn f x.n (λg h.h (g f)) (λu.x) (λu.u)) 2 (λg h.h (g (λx.FALSE))) (λu.TRUE) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 2)))) (PRED (PRED 2))) SUCC (PRED 2) SUCC 2 →
+(λf x.2 (λg h.h (g f)) (λu.x) (λu.u)) (λg h.h (g (λx.FALSE))) (λu.TRUE) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 2)))) (PRED (PRED 2))) SUCC (PRED 2) SUCC 2 →
+(λx.2 (λg h.h (g (λg h.h (g (λx.FALSE))))) (λu.x) (λu.u)) (λu.TRUE) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 2)))) (PRED (PRED 2))) SUCC (PRED 2) SUCC 2 →
+2 (λg h.h (g (λg h.h (g (λx.FALSE))))) (λu u.TRUE) (λu.u) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 2)))) (PRED (PRED 2))) SUCC (PRED 2) SUCC 2 →
+(λf x.f (f x)) (λg h.h (g (λg h.h (g (λx.FALSE))))) (λu u.TRUE) (λu.u) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 2)))) (PRED (PRED 2))) SUCC (PRED 2) SUCC 2 →
+(λx.(λg h.h (g (λg h.h (g (λx.FALSE))))) ((λg h.h (g (λg h.h (g (λx.FALSE))))) x)) (λu u.TRUE) (λu.u) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 2)))) (PRED (PRED 2))) SUCC (PRED 2) SUCC 2 →
+(λg h.h (g (λg h.h (g (λx.FALSE))))) ((λg h.h (g (λg h.h (g (λx.FALSE))))) (λu u.TRUE)) (λu.u) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 2)))) (PRED (PRED 2))) SUCC (PRED 2) SUCC 2 →
+(λh.h ((λg h.h (g (λg h.h (g (λx.FALSE))))) (λu u.TRUE) (λg h.h (g (λx.FALSE))))) (λu.u) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 2)))) (PRED (PRED 2))) SUCC (PRED 2) SUCC 2 →
+(λu.u) ((λg h.h (g (λg h.h (g (λx.FALSE))))) (λu u.TRUE) (λg h.h (g (λx.FALSE)))) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 2)))) (PRED (PRED 2))) SUCC (PRED 2) SUCC 2 →
+(λg h.h (g (λg h.h (g (λx.FALSE))))) (λu u.TRUE) (λg h.h (g (λx.FALSE))) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 2)))) (PRED (PRED 2))) SUCC (PRED 2) SUCC 2 →
+(λh.h ((λu u.TRUE) (λg h.h (g (λx.FALSE))))) (λg h.h (g (λx.FALSE))) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 2)))) (PRED (PRED 2))) SUCC (PRED 2) SUCC 2 →
+(λg h.h (g (λx.FALSE))) ((λu u.TRUE) (λg h.h (g (λx.FALSE)))) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 2)))) (PRED (PRED 2))) SUCC (PRED 2) SUCC 2 →
+(λh.h ((λu u.TRUE) (λg h.h (g (λx.FALSE))) (λx.FALSE))) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 2)))) (PRED (PRED 2))) SUCC (PRED 2) SUCC 2 →
+(λu.u) ((λu u.TRUE) (λg h.h (g (λx.FALSE))) (λx.FALSE)) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 2)))) (PRED (PRED 2))) SUCC (PRED 2) SUCC 2 →
+(λu u.TRUE) (λg h.h (g (λx.FALSE))) (λx.FALSE) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 2)))) (PRED (PRED 2))) SUCC (PRED 2) SUCC 2 →
+(λu.TRUE) (λx.FALSE) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 2)))) (PRED (PRED 2))) SUCC (PRED 2) SUCC 2 →
+TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 2)))) (PRED (PRED 2))) SUCC (PRED 2) SUCC 2 →
+(λx y.x) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 2)))) (PRED (PRED 2))) SUCC (PRED 2) SUCC 2 →
+(λy.0) (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 2)))) (PRED (PRED 2))) SUCC (PRED 2) SUCC 2 →
+0 SUCC (PRED 2) SUCC 2 →
+(λf x.x) SUCC (PRED 2) SUCC 2 →
+(λx.x) (PRED 2) SUCC 2 →
+PRED 2 SUCC 2 →
+(λn f x.n (λg h.h (g f)) (λu.x) (λu.u)) 2 SUCC 2 →
+(λf x.2 (λg h.h (g f)) (λu.x) (λu.u)) SUCC 2 →
+(λx.2 (λg h.h (g SUCC)) (λu.x) (λu.u)) 2 →
+2 (λg h.h (g SUCC)) (λu.2) (λu.u) →
+(λf x.f (f x)) (λg h.h (g SUCC)) (λu.2) (λu.u) →
+(λx.(λg h.h (g SUCC)) ((λg h.h (g SUCC)) x)) (λu.2) (λu.u) →
+(λg h.h (g SUCC)) ((λg h.h (g SUCC)) (λu.2)) (λu.u) →
+(λh.h ((λg h.h (g SUCC)) (λu.2) SUCC)) (λu.u) →
+(λu.u) ((λg h.h (g SUCC)) (λu.2) SUCC) →
+(λg h.h (g SUCC)) (λu.2) SUCC →
+(λh.h ((λu.2) SUCC)) SUCC →
+SUCC ((λu.2) SUCC) →
+(λn f x.f (n f x)) ((λu.2) SUCC) →
+λf x.f ((λu.2) SUCC f x) →
+λf x.f (2 f x) →
+λf x.f ((λf x.f (f x)) f x) →
+λf x.f ((λx.f (f x)) x) →
+λf x.f (f (f x))
+
+λ> Y Sum 3 →
+(λf.(λx.f (x x)) (λx.f (x x))) Sum 3 →
+(λx.Sum (x x)) (λx.Sum (x x)) 3 →
+Sum ((λx.Sum (x x)) (λx.Sum (x x))) 3 →
+(λf x.IF (ISZERO x) 0 (PLUS (f (PRED x)) x)) ((λx.Sum (x x)) (λx.Sum (x x))) 3 →
+(λx.IF (ISZERO x) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED x)) x)) 3 →
+IF (ISZERO 3) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 3)) 3) →
+(λp x y.p x y) (ISZERO 3) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 3)) 3) →
+(λx y.ISZERO 3 x y) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 3)) 3) →
+(λy.ISZERO 3 0 y) (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 3)) 3) →
+ISZERO 3 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 3)) 3) →
+(λn.n (λx.FALSE) TRUE) 3 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 3)) 3) →
+3 (λx.FALSE) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 3)) 3) →
+(λf x.f (f (f x))) (λx.FALSE) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 3)) 3) →
+(λx.(λx.FALSE) ((λx.FALSE) ((λx.FALSE) x))) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 3)) 3) →
+(λx.FALSE) ((λx.FALSE) ((λx.FALSE) TRUE)) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 3)) 3) →
+FALSE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 3)) 3) →
+(λx y.y) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 3)) 3) →
+(λy.y) (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 3)) 3) →
+PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 3)) 3 →
+(λn m.n SUCC m) ((λx.Sum (x x)) (λx.Sum (x x)) (PRED 3)) 3 →
+(λm.(λx.Sum (x x)) (λx.Sum (x x)) (PRED 3) SUCC m) 3 →
+(λx.Sum (x x)) (λx.Sum (x x)) (PRED 3) SUCC 3 →
+Sum ((λx.Sum (x x)) (λx.Sum (x x))) (PRED 3) SUCC 3 →
+(λf x.IF (ISZERO x) 0 (PLUS (f (PRED x)) x)) ((λx.Sum (x x)) (λx.Sum (x x))) (PRED 3) SUCC 3 →
+(λx.IF (ISZERO x) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED x)) x)) (PRED 3) SUCC 3 →
+IF (ISZERO (PRED 3)) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 3))) (PRED 3)) SUCC 3 →
+(λp x y.p x y) (ISZERO (PRED 3)) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 3))) (PRED 3)) SUCC 3 →
+(λx y.ISZERO (PRED 3) x y) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 3))) (PRED 3)) SUCC 3 →
+(λy.ISZERO (PRED 3) 0 y) (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 3))) (PRED 3)) SUCC 3 →
+ISZERO (PRED 3) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 3))) (PRED 3)) SUCC 3 →
+(λn.n (λx.FALSE) TRUE) (PRED 3) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 3))) (PRED 3)) SUCC 3 →
+PRED 3 (λx.FALSE) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 3))) (PRED 3)) SUCC 3 →
+(λn f x.n (λg h.h (g f)) (λu.x) (λu.u)) 3 (λx.FALSE) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 3))) (PRED 3)) SUCC 3 →
+(λf x.3 (λg h.h (g f)) (λu.x) (λu.u)) (λx.FALSE) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 3))) (PRED 3)) SUCC 3 →
+(λx.3 (λg h.h (g (λx.FALSE))) (λu.x) (λu.u)) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 3))) (PRED 3)) SUCC 3 →
+3 (λg h.h (g (λx.FALSE))) (λu.TRUE) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 3))) (PRED 3)) SUCC 3 →
+(λf x.f (f (f x))) (λg h.h (g (λx.FALSE))) (λu.TRUE) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 3))) (PRED 3)) SUCC 3 →
+(λx.(λg h.h (g (λx.FALSE))) ((λg h.h (g (λx.FALSE))) ((λg h.h (g (λx.FALSE))) x))) (λu.TRUE) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 3))) (PRED 3)) SUCC 3 →
+(λg h.h (g (λx.FALSE))) ((λg h.h (g (λx.FALSE))) ((λg h.h (g (λx.FALSE))) (λu.TRUE))) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 3))) (PRED 3)) SUCC 3 →
+(λh.h ((λg h.h (g (λx.FALSE))) ((λg h.h (g (λx.FALSE))) (λu.TRUE)) (λx.FALSE))) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 3))) (PRED 3)) SUCC 3 →
+(λu.u) ((λg h.h (g (λx.FALSE))) ((λg h.h (g (λx.FALSE))) (λu.TRUE)) (λx.FALSE)) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 3))) (PRED 3)) SUCC 3 →
+(λg h.h (g (λx.FALSE))) ((λg h.h (g (λx.FALSE))) (λu.TRUE)) (λx.FALSE) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 3))) (PRED 3)) SUCC 3 →
+(λh.h ((λg h.h (g (λx.FALSE))) (λu.TRUE) (λx.FALSE))) (λx.FALSE) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 3))) (PRED 3)) SUCC 3 →
+(λx.FALSE) ((λg h.h (g (λx.FALSE))) (λu.TRUE) (λx.FALSE)) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 3))) (PRED 3)) SUCC 3 →
+FALSE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 3))) (PRED 3)) SUCC 3 →
+(λx y.y) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 3))) (PRED 3)) SUCC 3 →
+(λy.y) (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 3))) (PRED 3)) SUCC 3 →
+PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 3))) (PRED 3) SUCC 3 →
+(λn m.n SUCC m) ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 3))) (PRED 3) SUCC 3 →
+(λm.(λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 3)) SUCC m) (PRED 3) SUCC 3 →
+(λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+Sum ((λx.Sum (x x)) (λx.Sum (x x))) (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λf x.IF (ISZERO x) 0 (PLUS (f (PRED x)) x)) ((λx.Sum (x x)) (λx.Sum (x x))) (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λx.IF (ISZERO x) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED x)) x)) (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+IF (ISZERO (PRED (PRED 3))) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3)))) (PRED (PRED 3))) SUCC (PRED 3) SUCC 3 →
+(λp x y.p x y) (ISZERO (PRED (PRED 3))) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3)))) (PRED (PRED 3))) SUCC (PRED 3) SUCC 3 →
+(λx y.ISZERO (PRED (PRED 3)) x y) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3)))) (PRED (PRED 3))) SUCC (PRED 3) SUCC 3 →
+(λy.ISZERO (PRED (PRED 3)) 0 y) (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3)))) (PRED (PRED 3))) SUCC (PRED 3) SUCC 3 →
+ISZERO (PRED (PRED 3)) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3)))) (PRED (PRED 3))) SUCC (PRED 3) SUCC 3 →
+(λn.n (λx.FALSE) TRUE) (PRED (PRED 3)) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3)))) (PRED (PRED 3))) SUCC (PRED 3) SUCC 3 →
+PRED (PRED 3) (λx.FALSE) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3)))) (PRED (PRED 3))) SUCC (PRED 3) SUCC 3 →
+(λn f x.n (λg h.h (g f)) (λu.x) (λu.u)) (PRED 3) (λx.FALSE) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3)))) (PRED (PRED 3))) SUCC (PRED 3) SUCC 3 →
+(λf x.PRED 3 (λg h.h (g f)) (λu.x) (λu.u)) (λx.FALSE) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3)))) (PRED (PRED 3))) SUCC (PRED 3) SUCC 3 →
+(λx.PRED 3 (λg h.h (g (λx.FALSE))) (λu.x) (λu.u)) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3)))) (PRED (PRED 3))) SUCC (PRED 3) SUCC 3 →
+PRED 3 (λg h.h (g (λx.FALSE))) (λu.TRUE) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3)))) (PRED (PRED 3))) SUCC (PRED 3) SUCC 3 →
+(λn f x.n (λg h.h (g f)) (λu.x) (λu.u)) 3 (λg h.h (g (λx.FALSE))) (λu.TRUE) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3)))) (PRED (PRED 3))) SUCC (PRED 3) SUCC 3 →
+(λf x.3 (λg h.h (g f)) (λu.x) (λu.u)) (λg h.h (g (λx.FALSE))) (λu.TRUE) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3)))) (PRED (PRED 3))) SUCC (PRED 3) SUCC 3 →
+(λx.3 (λg h.h (g (λg h.h (g (λx.FALSE))))) (λu.x) (λu.u)) (λu.TRUE) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3)))) (PRED (PRED 3))) SUCC (PRED 3) SUCC 3 →
+3 (λg h.h (g (λg h.h (g (λx.FALSE))))) (λu u.TRUE) (λu.u) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3)))) (PRED (PRED 3))) SUCC (PRED 3) SUCC 3 →
+(λf x.f (f (f x))) (λg h.h (g (λg h.h (g (λx.FALSE))))) (λu u.TRUE) (λu.u) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3)))) (PRED (PRED 3))) SUCC (PRED 3) SUCC 3 →
+(λx.(λg h.h (g (λg h.h (g (λx.FALSE))))) ((λg h.h (g (λg h.h (g (λx.FALSE))))) ((λg h.h (g (λg h.h (g (λx.FALSE))))) x))) (λu u.TRUE) (λu.u) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3)))) (PRED (PRED 3))) SUCC (PRED 3) SUCC 3 →
+(λg h.h (g (λg h.h (g (λx.FALSE))))) ((λg h.h (g (λg h.h (g (λx.FALSE))))) ((λg h.h (g (λg h.h (g (λx.FALSE))))) (λu u.TRUE))) (λu.u) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3)))) (PRED (PRED 3))) SUCC (PRED 3) SUCC 3 →
+(λh.h ((λg h.h (g (λg h.h (g (λx.FALSE))))) ((λg h.h (g (λg h.h (g (λx.FALSE))))) (λu u.TRUE)) (λg h.h (g (λx.FALSE))))) (λu.u) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3)))) (PRED (PRED 3))) SUCC (PRED 3) SUCC 3 →
+(λu.u) ((λg h.h (g (λg h.h (g (λx.FALSE))))) ((λg h.h (g (λg h.h (g (λx.FALSE))))) (λu u.TRUE)) (λg h.h (g (λx.FALSE)))) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3)))) (PRED (PRED 3))) SUCC (PRED 3) SUCC 3 →
+(λg h.h (g (λg h.h (g (λx.FALSE))))) ((λg h.h (g (λg h.h (g (λx.FALSE))))) (λu u.TRUE)) (λg h.h (g (λx.FALSE))) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3)))) (PRED (PRED 3))) SUCC (PRED 3) SUCC 3 →
+(λh.h ((λg h.h (g (λg h.h (g (λx.FALSE))))) (λu u.TRUE) (λg h.h (g (λx.FALSE))))) (λg h.h (g (λx.FALSE))) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3)))) (PRED (PRED 3))) SUCC (PRED 3) SUCC 3 →
+(λg h.h (g (λx.FALSE))) ((λg h.h (g (λg h.h (g (λx.FALSE))))) (λu u.TRUE) (λg h.h (g (λx.FALSE)))) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3)))) (PRED (PRED 3))) SUCC (PRED 3) SUCC 3 →
+(λh.h ((λg h.h (g (λg h.h (g (λx.FALSE))))) (λu u.TRUE) (λg h.h (g (λx.FALSE))) (λx.FALSE))) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3)))) (PRED (PRED 3))) SUCC (PRED 3) SUCC 3 →
+(λu.u) ((λg h.h (g (λg h.h (g (λx.FALSE))))) (λu u.TRUE) (λg h.h (g (λx.FALSE))) (λx.FALSE)) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3)))) (PRED (PRED 3))) SUCC (PRED 3) SUCC 3 →
+(λg h.h (g (λg h.h (g (λx.FALSE))))) (λu u.TRUE) (λg h.h (g (λx.FALSE))) (λx.FALSE) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3)))) (PRED (PRED 3))) SUCC (PRED 3) SUCC 3 →
+(λh.h ((λu u.TRUE) (λg h.h (g (λx.FALSE))))) (λg h.h (g (λx.FALSE))) (λx.FALSE) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3)))) (PRED (PRED 3))) SUCC (PRED 3) SUCC 3 →
+(λg h.h (g (λx.FALSE))) ((λu u.TRUE) (λg h.h (g (λx.FALSE)))) (λx.FALSE) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3)))) (PRED (PRED 3))) SUCC (PRED 3) SUCC 3 →
+(λh.h ((λu u.TRUE) (λg h.h (g (λx.FALSE))) (λx.FALSE))) (λx.FALSE) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3)))) (PRED (PRED 3))) SUCC (PRED 3) SUCC 3 →
+(λx.FALSE) ((λu u.TRUE) (λg h.h (g (λx.FALSE))) (λx.FALSE)) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3)))) (PRED (PRED 3))) SUCC (PRED 3) SUCC 3 →
+FALSE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3)))) (PRED (PRED 3))) SUCC (PRED 3) SUCC 3 →
+(λx y.y) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3)))) (PRED (PRED 3))) SUCC (PRED 3) SUCC 3 →
+(λy.y) (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3)))) (PRED (PRED 3))) SUCC (PRED 3) SUCC 3 →
+PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3)))) (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λn m.n SUCC m) ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3)))) (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λm.(λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3))) SUCC m) (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED 3))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+Sum ((λx.Sum (x x)) (λx.Sum (x x))) (PRED (PRED (PRED 3))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λf x.IF (ISZERO x) 0 (PLUS (f (PRED x)) x)) ((λx.Sum (x x)) (λx.Sum (x x))) (PRED (PRED (PRED 3))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λx.IF (ISZERO x) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED x)) x)) (PRED (PRED (PRED 3))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+IF (ISZERO (PRED (PRED (PRED 3)))) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λp x y.p x y) (ISZERO (PRED (PRED (PRED 3)))) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λx y.ISZERO (PRED (PRED (PRED 3))) x y) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λy.ISZERO (PRED (PRED (PRED 3))) 0 y) (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+ISZERO (PRED (PRED (PRED 3))) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λn.n (λx.FALSE) TRUE) (PRED (PRED (PRED 3))) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+PRED (PRED (PRED 3)) (λx.FALSE) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λn f x.n (λg h.h (g f)) (λu.x) (λu.u)) (PRED (PRED 3)) (λx.FALSE) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λf x.PRED (PRED 3) (λg h.h (g f)) (λu.x) (λu.u)) (λx.FALSE) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λx.PRED (PRED 3) (λg h.h (g (λx.FALSE))) (λu.x) (λu.u)) TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+PRED (PRED 3) (λg h.h (g (λx.FALSE))) (λu.TRUE) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λn f x.n (λg h.h (g f)) (λu.x) (λu.u)) (PRED 3) (λg h.h (g (λx.FALSE))) (λu.TRUE) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λf x.PRED 3 (λg h.h (g f)) (λu.x) (λu.u)) (λg h.h (g (λx.FALSE))) (λu.TRUE) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λx.PRED 3 (λg h.h (g (λg h.h (g (λx.FALSE))))) (λu.x) (λu.u)) (λu.TRUE) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+PRED 3 (λg h.h (g (λg h.h (g (λx.FALSE))))) (λu u.TRUE) (λu.u) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λn f x.n (λg h.h (g f)) (λu.x) (λu.u)) 3 (λg h.h (g (λg h.h (g (λx.FALSE))))) (λu u.TRUE) (λu.u) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λf x.3 (λg h.h (g f)) (λu.x) (λu.u)) (λg h.h (g (λg h.h (g (λx.FALSE))))) (λu u.TRUE) (λu.u) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λx.3 (λg h.h (g (λg h.h (g (λg h.h (g (λx.FALSE))))))) (λu.x) (λu.u)) (λu u.TRUE) (λu.u) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+3 (λg h.h (g (λg h.h (g (λg h.h (g (λx.FALSE))))))) (λu u u.TRUE) (λu.u) (λu.u) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λf x.f (f (f x))) (λg h.h (g (λg h.h (g (λg h.h (g (λx.FALSE))))))) (λu u u.TRUE) (λu.u) (λu.u) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λx.(λg h.h (g (λg h.h (g (λg h.h (g (λx.FALSE))))))) ((λg h.h (g (λg h.h (g (λg h.h (g (λx.FALSE))))))) ((λg h.h (g (λg h.h (g (λg h.h (g (λx.FALSE))))))) x))) (λu u u.TRUE) (λu.u) (λu.u) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λg h.h (g (λg h.h (g (λg h.h (g (λx.FALSE))))))) ((λg h.h (g (λg h.h (g (λg h.h (g (λx.FALSE))))))) ((λg h.h (g (λg h.h (g (λg h.h (g (λx.FALSE))))))) (λu u u.TRUE))) (λu.u) (λu.u) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λh.h ((λg h.h (g (λg h.h (g (λg h.h (g (λx.FALSE))))))) ((λg h.h (g (λg h.h (g (λg h.h (g (λx.FALSE))))))) (λu u u.TRUE)) (λg h.h (g (λg h.h (g (λx.FALSE))))))) (λu.u) (λu.u) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λu.u) ((λg h.h (g (λg h.h (g (λg h.h (g (λx.FALSE))))))) ((λg h.h (g (λg h.h (g (λg h.h (g (λx.FALSE))))))) (λu u u.TRUE)) (λg h.h (g (λg h.h (g (λx.FALSE)))))) (λu.u) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λg h.h (g (λg h.h (g (λg h.h (g (λx.FALSE))))))) ((λg h.h (g (λg h.h (g (λg h.h (g (λx.FALSE))))))) (λu u u.TRUE)) (λg h.h (g (λg h.h (g (λx.FALSE))))) (λu.u) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λh.h ((λg h.h (g (λg h.h (g (λg h.h (g (λx.FALSE))))))) (λu u u.TRUE) (λg h.h (g (λg h.h (g (λx.FALSE))))))) (λg h.h (g (λg h.h (g (λx.FALSE))))) (λu.u) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λg h.h (g (λg h.h (g (λx.FALSE))))) ((λg h.h (g (λg h.h (g (λg h.h (g (λx.FALSE))))))) (λu u u.TRUE) (λg h.h (g (λg h.h (g (λx.FALSE)))))) (λu.u) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λh.h ((λg h.h (g (λg h.h (g (λg h.h (g (λx.FALSE))))))) (λu u u.TRUE) (λg h.h (g (λg h.h (g (λx.FALSE))))) (λg h.h (g (λx.FALSE))))) (λu.u) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λu.u) ((λg h.h (g (λg h.h (g (λg h.h (g (λx.FALSE))))))) (λu u u.TRUE) (λg h.h (g (λg h.h (g (λx.FALSE))))) (λg h.h (g (λx.FALSE)))) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λg h.h (g (λg h.h (g (λg h.h (g (λx.FALSE))))))) (λu u u.TRUE) (λg h.h (g (λg h.h (g (λx.FALSE))))) (λg h.h (g (λx.FALSE))) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λh.h ((λu u u.TRUE) (λg h.h (g (λg h.h (g (λx.FALSE))))))) (λg h.h (g (λg h.h (g (λx.FALSE))))) (λg h.h (g (λx.FALSE))) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λg h.h (g (λg h.h (g (λx.FALSE))))) ((λu u u.TRUE) (λg h.h (g (λg h.h (g (λx.FALSE)))))) (λg h.h (g (λx.FALSE))) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λh.h ((λu u u.TRUE) (λg h.h (g (λg h.h (g (λx.FALSE))))) (λg h.h (g (λx.FALSE))))) (λg h.h (g (λx.FALSE))) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λg h.h (g (λx.FALSE))) ((λu u u.TRUE) (λg h.h (g (λg h.h (g (λx.FALSE))))) (λg h.h (g (λx.FALSE)))) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λh.h ((λu u u.TRUE) (λg h.h (g (λg h.h (g (λx.FALSE))))) (λg h.h (g (λx.FALSE))) (λx.FALSE))) (λu.u) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λu.u) ((λu u u.TRUE) (λg h.h (g (λg h.h (g (λx.FALSE))))) (λg h.h (g (λx.FALSE))) (λx.FALSE)) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λu u u.TRUE) (λg h.h (g (λg h.h (g (λx.FALSE))))) (λg h.h (g (λx.FALSE))) (λx.FALSE) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λu u.TRUE) (λg h.h (g (λx.FALSE))) (λx.FALSE) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λu.TRUE) (λx.FALSE) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+TRUE 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λx y.x) 0 (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λy.0) (PLUS ((λx.Sum (x x)) (λx.Sum (x x)) (PRED (PRED (PRED (PRED 3))))) (PRED (PRED (PRED 3)))) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+0 SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λf x.x) SUCC (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+(λx.x) (PRED (PRED 3)) SUCC (PRED 3) SUCC 3 →
+PRED (PRED 3) SUCC (PRED 3) SUCC 3 →
+(λn f x.n (λg h.h (g f)) (λu.x) (λu.u)) (PRED 3) SUCC (PRED 3) SUCC 3 →
+(λf x.PRED 3 (λg h.h (g f)) (λu.x) (λu.u)) SUCC (PRED 3) SUCC 3 →
+(λx.PRED 3 (λg h.h (g SUCC)) (λu.x) (λu.u)) (PRED 3) SUCC 3 →
+PRED 3 (λg h.h (g SUCC)) (λu.PRED 3) (λu.u) SUCC 3 →
+(λn f x.n (λg h.h (g f)) (λu.x) (λu.u)) 3 (λg h.h (g SUCC)) (λu.PRED 3) (λu.u) SUCC 3 →
+(λf x.3 (λg h.h (g f)) (λu.x) (λu.u)) (λg h.h (g SUCC)) (λu.PRED 3) (λu.u) SUCC 3 →
+(λx.3 (λg h.h (g (λg h.h (g SUCC)))) (λu.x) (λu.u)) (λu.PRED 3) (λu.u) SUCC 3 →
+3 (λg h.h (g (λg h.h (g SUCC)))) (λu u.PRED 3) (λu.u) (λu.u) SUCC 3 →
+(λf x.f (f (f x))) (λg h.h (g (λg h.h (g SUCC)))) (λu u.PRED 3) (λu.u) (λu.u) SUCC 3 →
+(λx.(λg h.h (g (λg h.h (g SUCC)))) ((λg h.h (g (λg h.h (g SUCC)))) ((λg h.h (g (λg h.h (g SUCC)))) x))) (λu u.PRED 3) (λu.u) (λu.u) SUCC 3 →
+(λg h.h (g (λg h.h (g SUCC)))) ((λg h.h (g (λg h.h (g SUCC)))) ((λg h.h (g (λg h.h (g SUCC)))) (λu u.PRED 3))) (λu.u) (λu.u) SUCC 3 →
+(λh.h ((λg h.h (g (λg h.h (g SUCC)))) ((λg h.h (g (λg h.h (g SUCC)))) (λu u.PRED 3)) (λg h.h (g SUCC)))) (λu.u) (λu.u) SUCC 3 →
+(λu.u) ((λg h.h (g (λg h.h (g SUCC)))) ((λg h.h (g (λg h.h (g SUCC)))) (λu u.PRED 3)) (λg h.h (g SUCC))) (λu.u) SUCC 3 →
+(λg h.h (g (λg h.h (g SUCC)))) ((λg h.h (g (λg h.h (g SUCC)))) (λu u.PRED 3)) (λg h.h (g SUCC)) (λu.u) SUCC 3 →
+(λh.h ((λg h.h (g (λg h.h (g SUCC)))) (λu u.PRED 3) (λg h.h (g SUCC)))) (λg h.h (g SUCC)) (λu.u) SUCC 3 →
+(λg h.h (g SUCC)) ((λg h.h (g (λg h.h (g SUCC)))) (λu u.PRED 3) (λg h.h (g SUCC))) (λu.u) SUCC 3 →
+(λh.h ((λg h.h (g (λg h.h (g SUCC)))) (λu u.PRED 3) (λg h.h (g SUCC)) SUCC)) (λu.u) SUCC 3 →
+(λu.u) ((λg h.h (g (λg h.h (g SUCC)))) (λu u.PRED 3) (λg h.h (g SUCC)) SUCC) SUCC 3 →
+(λg h.h (g (λg h.h (g SUCC)))) (λu u.PRED 3) (λg h.h (g SUCC)) SUCC SUCC 3 →
+(λh.h ((λu u.PRED 3) (λg h.h (g SUCC)))) (λg h.h (g SUCC)) SUCC SUCC 3 →
+(λg h.h (g SUCC)) ((λu u.PRED 3) (λg h.h (g SUCC))) SUCC SUCC 3 →
+(λh.h ((λu u.PRED 3) (λg h.h (g SUCC)) SUCC)) SUCC SUCC 3 →
+SUCC ((λu u.PRED 3) (λg h.h (g SUCC)) SUCC) SUCC 3 →
+(λn f x.f (n f x)) ((λu u.PRED 3) (λg h.h (g SUCC)) SUCC) SUCC 3 →
+(λf x.f ((λu u.PRED 3) (λg h.h (g SUCC)) SUCC f x)) SUCC 3 →
+(λx.SUCC ((λu u.PRED 3) (λg h.h (g SUCC)) SUCC SUCC x)) 3 →
+SUCC ((λu u.PRED 3) (λg h.h (g SUCC)) SUCC SUCC 3) →
+(λn f x.f (n f x)) ((λu u.PRED 3) (λg h.h (g SUCC)) SUCC SUCC 3) →
+λf x.f ((λu u.PRED 3) (λg h.h (g SUCC)) SUCC SUCC 3 f x) →
+λf x.f ((λu.PRED 3) SUCC SUCC 3 f x) →
+λf x.f (PRED 3 SUCC 3 f x) →
+λf x.f ((λn f x.n (λg h.h (g f)) (λu.x) (λu.u)) 3 SUCC 3 f x) →
+λf x.f ((λf x.3 (λg h.h (g f)) (λu.x) (λu.u)) SUCC 3 f x) →
+λf x.f ((λx.3 (λg h.h (g SUCC)) (λu.x) (λu.u)) 3 f x) →
+λf x.f (3 (λg h.h (g SUCC)) (λu.3) (λu.u) f x) →
+λf x.f ((λf x.f (f (f x))) (λg h.h (g SUCC)) (λu.3) (λu.u) f x) →
+λf x.f ((λx.(λg h.h (g SUCC)) ((λg h.h (g SUCC)) ((λg h.h (g SUCC)) x))) (λu.3) (λu.u) f x) →
+λf x.f ((λg h.h (g SUCC)) ((λg h.h (g SUCC)) ((λg h.h (g SUCC)) (λu.3))) (λu.u) f x) →
+λf x.f ((λh.h ((λg h.h (g SUCC)) ((λg h.h (g SUCC)) (λu.3)) SUCC)) (λu.u) f x) →
+λf x.f ((λu.u) ((λg h.h (g SUCC)) ((λg h.h (g SUCC)) (λu.3)) SUCC) f x) →
+λf x.f ((λg h.h (g SUCC)) ((λg h.h (g SUCC)) (λu.3)) SUCC f x) →
+λf x.f ((λh.h ((λg h.h (g SUCC)) (λu.3) SUCC)) SUCC f x) →
+λf x.f (SUCC ((λg h.h (g SUCC)) (λu.3) SUCC) f x) →
+λf x.f ((λn f x.f (n f x)) ((λg h.h (g SUCC)) (λu.3) SUCC) f x) →
+λf x.f ((λf x.f ((λg h.h (g SUCC)) (λu.3) SUCC f x)) f x) →
+λf x.f ((λx.f ((λg h.h (g SUCC)) (λu.3) SUCC f x)) x) →
+λf x.f (f ((λg h.h (g SUCC)) (λu.3) SUCC f x)) →
+λf x.f (f ((λh.h ((λu.3) SUCC)) SUCC f x)) →
+λf x.f (f (SUCC ((λu.3) SUCC) f x)) →
+λf x.f (f ((λn f x.f (n f x)) ((λu.3) SUCC) f x)) →
+λf x.f (f ((λf x.f ((λu.3) SUCC f x)) f x)) →
+λf x.f (f ((λx.f ((λu.3) SUCC f x)) x)) →
+λf x.f (f (f ((λu.3) SUCC f x))) →
+λf x.f (f (f (3 f x))) →
+λf x.f (f (f ((λf x.f (f (f x))) f x))) →
+λf x.f (f (f ((λx.f (f (f x))) x))) →
+λf x.f (f (f (f (f (f x)))))
+
+λ> End of input or input canceled. Exiting REPL.

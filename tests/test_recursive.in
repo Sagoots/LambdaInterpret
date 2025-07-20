@@ -1,0 +1,6 @@
+#define Sum @f x. IF (ISZERO x) 0 (PLUS (f (PRED x)) x)
+
+Y Sum 0
+Y Sum 1
+Y Sum 2
+Y Sum 3

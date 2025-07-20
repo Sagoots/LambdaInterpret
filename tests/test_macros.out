@@ -1,0 +1,24 @@
+--- λ-Calculus REPL ---
+Input from: C:\Users\solom\Documents\Wolfram\lambdaREPL\tests\test_macros.in
+Output to: C:\Users\solom\Documents\Wolfram\lambdaREPL\tests\test_macros.out
+Enter expressions or macro definitions (e.g., #define ID <expression>).
+ Type 'exit' or 'quit' to end.
+λ> Syntax error: Unexpected token MyLambdaInterpreter`Private`equal at atom parsing
+
+λ> ID A
+
+λ> Syntax error: Unexpected token MyLambdaInterpreter`Private`equal at atom parsing
+
+λ> SELF_APPLY ID
+
+λ> Syntax error: Unexpected token MyLambdaInterpreter`Private`equal at atom parsing
+
+λ> CONST_FIVE A
+
+λ> Y (λf x.x) →
+(λf.(λx.f (x x)) (λx.f (x x))) (λf x.x) →
+(λx.(λf x.x) (x x)) (λx.(λf x.x) (x x)) →
+(λf x.x) ((λx.(λf x.x) (x x)) (λx.(λf x.x) (x x))) →
+λx.x
+
+λ> End of input or input canceled. Exiting REPL.

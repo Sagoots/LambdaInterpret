@@ -1,0 +1,28 @@
+--- λ-Calculus REPL ---
+Input from: C:\Users\solom\Documents\Wolfram\lambdaREPL\tests\test_errors.in
+Output to: C:\Users\solom\Documents\Wolfram\lambdaREPL\tests\test_errors.out
+Enter expressions or macro definitions (e.g., #define ID <expression>).
+ Type 'exit' or 'quit' to end.
+λ> Parsing error: Expected MyLambdaInterpreter`Private`closeBrac, found MyLambdaInterpreter`Private`EOF
+
+λ> Syntax error: Unexpected token MyLambdaInterpreter`Private`EOF at atom parsing
+
+λ> 1 2 →
+(λf x.f x) 2 →
+λx.2 x →
+2 →
+λf x.f (f x)
+
+λ> Invalid macro definition format. Expected: #define <ID> <expression>
+
+
+λ> Syntax error: Unexpected token MyLambdaInterpreter`Private`equal at atom parsing
+
+λ> Invalid macro definition format. Expected: #define <ID> <expression>
+
+
+λ> UNDEFINED_MACRO A
+
+λ> Parsing error: Expected MyLambdaInterpreter`Private`closeBrac, found MyLambdaInterpreter`Private`EOF
+
+λ> End of input or input canceled. Exiting REPL.

@@ -1,0 +1,7 @@
+(\x.x) y
+((\x.x) (\y.y)) z
+3
+\x.x
+let id = (\x.x) in id A
+let apply = (\f x.f x) in apply (\a.a) B
+(\x.x) 5

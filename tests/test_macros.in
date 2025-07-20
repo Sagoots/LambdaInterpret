@@ -1,0 +1,8 @@
+#define ID = \x.x
+ID A
+#define SELF_APPLY = \f.f f
+SELF_APPLY ID
+#define CONST_FIVE = \x.5
+CONST_FIVE A
+
+Y (\f x.x)
