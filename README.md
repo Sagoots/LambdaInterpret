@@ -1,114 +1,124 @@
-Lambda Calculus REPL
+# 🚀 Lambda Calculus REPL
 
-A Read-Eval-Print Loop (REPL) for the untyped Lambda Calculus, implemented in Wolfram Mathematica. This project provides a functional interpreter for lambda expressions, supporting various reduction strategies, Church numeral arithmetic, and macro definitions.
-Features
+<div align="center">
 
-    Tokenization: Converts raw input strings into a stream of tokens.
+**A powerful Read-Eval-Print Loop for the untyped Lambda Calculus**
 
-    Parsing: Transforms token streams into an Abstract Syntax Tree (AST) based on lambda calculus grammar.
+*Built with Wolfram Mathematica*
 
-    Reduction (Evaluation): Implements normal-order beta-reduction, alpha-conversion (for variable capture avoidance), and eta-reduction.
+---
 
-    Pretty Printing: Converts ASTs back into a human-readable lambda calculus notation, minimizing parentheses based on operator precedence.
+*Developed as partial fulfillment for course 2360651 - Advanced Topics in Software Engineering*  
+*Technion, Spring 2024/25 • Supervised by Yossi Gil*
 
-    Macro Definitions: Supports user-defined macros using the #define syntax for shorthand notation and complex lambda terms.
+</div>
 
-    Church Numerals & Arithmetic: Built-in support for Church numerals and basic arithmetic operations (successor, addition, multiplication, predecessor, subtraction, zero check, less-than-or-equal).
+## ✨ Features
 
-    Church Booleans & Logic: Built-in support for Church booleans and logical operations (IF, NOT, AND, OR, XOR).
+### 🔧 Core Functionality
+- **🔤 Tokenization** - Intelligent parsing of lambda expressions into token streams
+- **🌳 AST Generation** - Converts tokens into Abstract Syntax Trees following lambda calculus grammar
+- **⚡ Reduction Engine** - Implements normal-order beta-reduction with alpha-conversion and eta-reduction
+- **🎨 Pretty Printing** - Clean, readable output with optimized parentheses placement
 
-    Y Combinator: Includes the Y combinator for defining recursive functions.
+### 🧮 Mathematical Operations
+- **🔢 Church Numerals** - Full support for Church numeral arithmetic
+  - `SUCC`, `PLUS`, `MULT`, `PRED`, `MINUS`
+  - `ISZERO`, `LEQ` (less-than-or-equal)
+- **🔀 Church Booleans** - Complete boolean logic system
+  - `TRUE`, `FALSE`, `IF`, `NOT`
+  - `AND`, `OR`, `XOR`
 
-    Robust Error Handling: Catches and reports syntax errors, invalid macro definitions, and runtime evaluation issues gracefully.
+### 🔄 Advanced Features
+- **📝 Macro Definitions** - Create custom shortcuts with `#define` syntax
+- **♻️ Y Combinator** - Built-in support for recursive function definitions
+- **📁 File I/O** - Read from files and log all interactions
+- **🛡️ Error Handling** - Robust error reporting and graceful failure handling
 
-    File Input/Output: Allows reading expressions from an input file and writing all REPL interactions (prompts, reduction steps, results, errors) to an output file.
+## 🚀 Getting Started
 
-    Package Structure: Organized as a Wolfram Language package (.wl file) for clean symbol management and easy import.
+### Prerequisites
+```mathematica
+Wolfram Mathematica (Version 10.0+)
+```
 
-Getting Started
-Prerequisites
+### 📦 Installation
 
-    Wolfram Mathematica (Version 10.0 or higher recommended)
+1. **Save the Package**
+   ```
+   MyLambdaREPL.wl
+   ```
 
-Installation
+2. **Add to Mathematica Path**
+   ```mathematica
+   (* Option 1: Applications directory *)
+   FileNameJoin[{$UserBaseDirectory, "Applications"}]
+   
+   (* Option 2: Custom directory *)
+   AppendTo[$Path, "path/to/your/directory"]
+   ```
 
-    Save the Package File: Save the entire code for your interpreter (the combined Tokenizer, Parser, Reducer, Printer, and LambdaREPL function logic) into a single file named MyLambdaREPL.wl.
+3. **Load the Package**
+   ```mathematica
+   Needs["MyLambdaREPL`"]
+   ```
 
-    Place on Mathematica's $Path:
+## 💡 Usage
 
-        Locate your Mathematica Applications directory. A common path is FileNameJoin[{$UserBaseDirectory, "Applications"}].
+### 🎮 Starting the REPL
 
-        Place the MyLambdaREPL.wl file directly into this Applications folder.
+| Mode | Command | Description |
+|------|---------|-------------|
+| **Interactive** | `LambdaREPL[]` | Standard notebook interaction |
+| **File Input** | `LambdaREPL["input.txt"]` | Read from file, output to notebook |
+| **File Output** | `LambdaREPL["", "output.txt"]` | Notebook input, save to file |
+| **Full File Mode** | `LambdaREPL["input.txt", "output.txt"]` | Complete file-based operation |
 
-        Alternatively, you can place MyLambdaREPL.wl in any directory and then add that directory to Mathematica's $Path using AppendTo[$Path, "path/to/your/directory"] (you might put this in your init.m for persistence).
+### ⚙️ Configuration
 
-Loading the Package
+Adjust the maximum reduction steps:
+```mathematica
+MyLambdaREPL`LambdaStepNum = 500;  (* Default: 100 *)
+LambdaREPL[]
+```
 
-Once the MyLambdaREPL.wl file is correctly placed, open a Wolfram Mathematica notebook and load the package:
+## 📖 Examples
 
-Needs["MyLambdaREPL`"]
+### 🔤 Basic Lambda Expressions
 
-Usage
-
-After loading the package, you can start the REPL.
-Running the REPL
-
-The LambdaREPL function accepts optional arguments for input and output files. The number of reduction steps is controlled by the public variable MyLambdaREPLLambdaStepNum`.
-
-    Interactive Mode (Default): Reads from the notebook, prints to the notebook.
-
-    LambdaREPL[]
-
-    Input from File: Reads expressions from input.txt, prints to the notebook.
-
-    LambdaREPL["input.txt"]
-
-    Output to File: Reads from the notebook, writes all output to output.txt.
-
-    LambdaREPL["", "output.txt"]
-
-    Input and Output Files: Reads from input.txt, writes all output to output.txt.
-
-    LambdaREPL["input.txt", "output.txt"]
-
-Controlling Reduction Steps
-
-You can change the maximum number of reduction steps by setting the LambdaStepNum variable, which is part of the MyLambdaREPL package context. The default value is 100.
-
-MyLambdaREPL`LambdaStepNum = 500; (* Set to 500 steps *)
-LambdaREPL[] (* Run REPL with the new step limit *)
-
-Interacting with the REPL
-
-Once the REPL starts, you will see the λ>  prompt.
-1. Evaluating Lambda Expressions
-
-Enter any valid lambda calculus expression.
-
+```mathematica
 λ> (\x.x) y
 Reduction Chain:
 (\x.x) y
 y
 Out: y
+```
 
+### 📚 Using Let Expressions
+
+```mathematica
 λ> let id = (\x.x) in id A
 Reduction Chain:
 let id = (\x.x) in id A
 (\x.x) A
 A
 Out: A
+```
 
+### 🧮 Church Numeral Arithmetic
+
+```mathematica
 λ> PLUS TWO THREE
 Reduction Chain:
 PLUS TWO THREE
-... (many steps) ...
+... (reduction steps) ...
 λf x.f (f (f (f (f x))))
-Out: λf x.f (f (f (f (f x)))) (* Church numeral for 5 *)
+Out: λf x.f (f (f (f (f x))))  (* Church numeral for 5 *)
+```
 
-2. Defining Macros
+### 📝 Macro Definitions
 
-Use the #define syntax to create shortcuts for complex lambda terms.
-
+```mathematica
 λ> #define ID = \x.x
 Defined macro: ID = λx.x
 
@@ -118,7 +128,11 @@ ID A
 (\x.x) A
 A
 Out: A
+```
 
+### 🔄 Recursive Functions with Y Combinator
+
+```mathematica
 λ> #define FACT_GEN = \f n. IF (ISZERO n) ONE (MULT n (f (PRED n)))
 Defined macro: FACT_GEN = λf n.IF (ISZERO n) ONE (MULT n (f (PRED n)))
 
@@ -128,46 +142,79 @@ Defined macro: FACT = Y FACT_GEN
 λ> FACT TWO
 Reduction Chain:
 FACT TWO
-... (many steps) ...
+... (reduction steps) ...
 λf x.f (f x)
-Out: λf x.f (f x) (* Church numeral for 2 *)
+Out: λf x.f (f x)  (* Church numeral for 2! = 2 *)
+```
 
-3. Exiting the REPL
+## 📋 Language Reference
 
-Type exit or quit at the prompt.
+### 🔤 Syntax Elements
 
+| Element | Syntax | Example |
+|---------|--------|---------|
+| **Variables** | `x`, `y`, `myVar` | `x` |
+| **Abstractions** | `\x.body` or `@x.body` | `\x.x` |
+| **Applications** | `f x` | `(\x.x) y` |
+| **Let Expressions** | `let var = val in body` | `let id = \x.x in id A` |
+| **Numbers** | `0`, `1`, `2`, `3`... | `PLUS 2 3` |
+
+### 🧮 Built-in Functions
+
+#### Arithmetic Operations
+- `SUCC` - Successor function
+- `PLUS` - Addition
+- `MULT` - Multiplication  
+- `PRED` - Predecessor
+- `MINUS` - Subtraction
+- `ISZERO` - Zero predicate
+- `LEQ` - Less than or equal
+
+#### Boolean Operations
+- `TRUE` / `FALSE` - Boolean constants
+- `IF` - Conditional expression
+- `NOT` - Logical negation
+- `AND` / `OR` / `XOR` - Logical operations
+
+#### Special Combinators
+- `Y` - Y combinator (fixed-point)
+- `I` - Identity combinator
+- `K` - Constant combinator  
+- `S` - Substitution combinator
+- `Z` - Zero combinator
+
+## 🏗️ Project Structure
+
+```
+MyLambdaREPL.wl
+├── Tokenizer      # String → Tokens
+├── Parser         # Tokens → AST  
+├── Reducer        # AST → Reduced AST
+├── Printer        # AST → Pretty String
+├── Macro System   # #define handling
+└── REPL Interface # User interaction
+```
+
+## 🚪 Exiting
+
+```mathematica
 λ> exit
 Exiting REPL. Goodbye!
 
-Supported Lambda Calculus Features
+λ> quit
+Exiting REPL. Goodbye!
+```
 
-    Variables: x, y, myVar
+## 🤝 Contributing
 
-    Abstractions: \x.x, \x y.x, @x.@y.x (both \ and @ are supported for lambda)
+We welcome contributions! Feel free to:
+- 🐛 Report bugs
+- 💡 Suggest new features  
+- 🔧 Submit pull requests
+- 📖 Improve documentation
 
-    Applications: f x, (f x) y
+## 📄 License
 
-    Let Expressions: let var = val in body
+This project was developed for academic purposes at Technion - Israel Institute of Technology.
 
-    Numbers (Church Numerals): Integers 0, 1, 2, 3... are automatically converted to their Church numeral representation upon parsing.
-
-    Y Combinator: Y
-
-    Church Arithmetic: SUCC, PLUS, MULT, PRED, MINUS, ISZERO, LEQ
-
-    Church Booleans: TRUE, FALSE, IF, NOT, AND, OR, XOR
-
-    Combinators: I, K, S, Z
-
-Project Structure
-
-The entire interpreter is contained within a single Wolfram Language package file:
-
-    MyLambdaREPL.wl: Contains all the code, organized into private contexts for internal functions and a public interface for the LambdaREPL function and LambdaStepNum variable.
-
-Contributing
-
-Feel free to fork the repository, suggest improvements, or report issues.
-License
-
-This project is open-source and available under the MIT License.
+---
