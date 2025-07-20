@@ -62,7 +62,7 @@ Wolfram Mathematica (Version 10.0+)
    ```mathematica
    Needs["MyLambdaREPL`"]
    ```
-
+   Alternatively, just copy and paste MyLambdaREPL into yout mahematica notebook.
 ## 💡 Usage
 
 ### 🎮 Starting the REPL
@@ -108,12 +108,10 @@ Out: A
 ### 🧮 Church Numeral Arithmetic
 
 ```mathematica
-λ> PLUS TWO THREE
-Reduction Chain:
-PLUS TWO THREE
-... (reduction steps) ...
-λf x.f (f (f (f (f x))))
-Out: λf x.f (f (f (f (f x))))  (* Church numeral for 5 *)
+λ> PLUS 2 3
+PLUS 2 3 ->
+... (reduction steps) ... ->
+λf x.f (f (f (f (f x)))) -> (* Church numeral for 5 *)
 ```
 
 ### 📝 Macro Definitions
@@ -123,11 +121,9 @@ Out: λf x.f (f (f (f (f x))))  (* Church numeral for 5 *)
 Defined macro: ID = λx.x
 
 λ> ID A
-Reduction Chain:
-ID A
-(\x.x) A
+ID A ->
+(\x.x) A ->
 A
-Out: A
 ```
 
 ### 🔄 Recursive Functions with Y Combinator
@@ -139,11 +135,10 @@ Defined macro: FACT_GEN = λf n.IF (ISZERO n) ONE (MULT n (f (PRED n)))
 λ> #define FACT = Y FACT_GEN
 Defined macro: FACT = Y FACT_GEN
 
-λ> FACT TWO
-Reduction Chain:
-FACT TWO
+λ> FACT 2
+FACT 2 ->
 ... (reduction steps) ...
-λf x.f (f x)
+λf x.f (f x) ->
 Out: λf x.f (f x)  (* Church numeral for 2! = 2 *)
 ```
 
